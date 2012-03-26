@@ -18,10 +18,11 @@ namespace EverCraftKata
         }
 
         [Test]
-        public void taking_damage_decrements_hit_points()
+        public void taking_less_damage_than_hitpoints_decrements_and_doesnt_kill()
         {
             bob.Take_damage(2);
             Assert.AreEqual(3, bob.Hit_points);
+            Assert.IsTrue(bob.Is_alive);
         }
 
         [Test]
