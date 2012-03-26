@@ -47,6 +47,13 @@ namespace EverCraftKata
         }
 
         [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void trying_one_silly_exception_case()
+        {
+            Abilities ab = new Abilities(0, 1, 1, 1, 1, 1);
+        }
+
+        [Test]
         public void strength_of_20_returns_plus_five_modifier()
         {
             abilities = new Abilities(20, 5, 5, 5, 5, 5);
