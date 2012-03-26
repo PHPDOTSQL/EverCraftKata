@@ -68,25 +68,40 @@ namespace EverCraftKata
             Charisma = charisma;
         }
   
-        private void Check_for_valid_ability_values(int strength, int dexterity, int constitution, int wisdom, int intelligence, int charisma)
+        private void Check_for_valid_ability_values(int strength, 
+            int dexterity, 
+            int constitution, 
+            int wisdom, 
+            int intelligence, 
+            int charisma)
         {
             if (
-                strength > MAX ||
-                dexterity > MAX ||
-                constitution > MAX ||
-                wisdom > MAX ||
-                intelligence > MAX ||
-                charisma > MAX ||
-                strength < MIN ||
-                dexterity < MIN ||
-                constitution < MIN ||
-                wisdom < MIN ||
-                intelligence < MIN ||
-                charisma < MIN
+                Anything_is_too_big(strength, dexterity, constitution, wisdom, intelligence, charisma) ||
+                Anything_is_too_small(strength, dexterity, constitution, wisdom, intelligence, charisma)
             )
             {
                 throw new ArgumentException("Can't have abilities over 20 or under zero!");
             }
+        }
+  
+        private bool Anything_is_too_small(int strength, int dexterity, int constitution, int wisdom, int intelligence, int charisma)
+        {
+            return strength < MIN ||
+                   dexterity < MIN ||
+                   constitution < MIN ||
+                   wisdom < MIN ||
+                   intelligence < MIN ||
+                   charisma < MIN;
+        }
+  
+        private static bool Anything_is_too_big(int strength, int dexterity, int constitution, int wisdom, int intelligence, int charisma)
+        {
+            return strength > MAX ||
+                   dexterity > MAX ||
+                   constitution > MAX ||
+                   wisdom > MAX ||
+                   intelligence > MAX ||
+                   charisma > MAX;
         }
 
         public int Modifier(int ability)
