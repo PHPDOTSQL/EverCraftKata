@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverCraftKata", "EverCraftKata\EverCraftKata.csproj", "{EA6048C5-E0D2-4E93-94C6-9B7E9E3C659E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{6345BD55-680E-4615-AFF0-94EB21040455}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA6048C5-E0D2-4E93-94C6-9B7E9E3C659E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6048C5-E0D2-4E93-94C6-9B7E9E3C659E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6048C5-E0D2-4E93-94C6-9B7E9E3C659E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6048C5-E0D2-4E93-94C6-9B7E9E3C659E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+Gemfile.lock
+bin
+obj
+*.suo
+*.swp
+*~
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+contacts.pdf
+Pages.*
+License.log
+TestResults/
