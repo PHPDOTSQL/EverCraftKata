@@ -41,7 +41,7 @@ namespace EverCraftKata
         [TestCase(1, 1, 1, 0, 1, 1, ExpectedException = (typeof(ArgumentException)))]
         [TestCase(1, 1, 1, 1, 0, 1, ExpectedException = (typeof(ArgumentException)))]
         [TestCase(1, 1, 1, 1, 1, 0, ExpectedException = (typeof(ArgumentException)))]
-        public void cant_give_abilities_over_20_or_under_0(int s, int d, int con, int w, int i, int chr)
+        public void cant_give_abilities_over_20_or_under_1(int s, int d, int con, int w, int i, int chr)
         {
             Abilities ab = new Abilities(s, d, con, w, i, chr);
         }
