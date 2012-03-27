@@ -48,20 +48,18 @@ namespace EverCraftKata
             }
         }
 
+        private bool isCritical = false;
+
         public int Attack(int armor_class)
         {
             int damage = 0;
             int roll = Roll_a_die();
-            bool is_critical = false;
-            if (roll == 20)
-            {
-                is_critical = true;
-            }
+            
             if (Is_a_hit(Die_roll, armor_class))
             {
                 damage = 1;
             }
-            if (is_critical)
+            if (isCritical)
             {
                 damage *= 2;
             }
@@ -82,13 +80,23 @@ namespace EverCraftKata
   
         public int Roll_a_die()
         {
-            if (Die_roll > 0)
+            int modifier = Abilities.Modifier(Abilities.Strength);
+            if (Die_roll == 0)
             {
-                return Die_roll;
+                var die = new System.Random();
+                int roll = die.Next(20);
+                if (roll == 20)
+                {
+                    isCritical = true;
+                }
+                return roll+modifier;
             }
-            var die = new System.Random();
-            int roll = die.Next(20);
-            return roll;
+            if (Die_roll == 20)
+            {
+                isCritical = true;
+            }
+
+            return Die_roll+modifier;
         }
     }
 }
