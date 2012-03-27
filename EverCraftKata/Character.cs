@@ -4,6 +4,9 @@ namespace EverCraftKata
 {
     public class Character
     {
+        const int DEFAULT = 10;
+        const int MIN_DAMAGE = 1;
+
         public Character(string name, Alignment alignment)
         {
             Is_alive = true;
@@ -16,27 +19,23 @@ namespace EverCraftKata
 
         public Abilities Abilities { get; set; }
         public Alignment Alignment { get; set; }
-        public int Armor_class { get;set; }
-        public int Hit_points { get;private set; }
-        public string Name { get;set; }
+        public int Armor_class { get; set; }
+        public int Hit_points { get; private set; }
+        public string Name { get; set; }
 
         public int Die_roll { get; set; }
 
-        public bool Is_alive
-        {
-            get;
-            private set;
-        }
+        public bool Is_alive { get; private set; }
 
         private void Initialize_default_abilities()
         {
             Abilities = new Abilities();
-            Abilities.Strength = 10;
-            Abilities.Dexterity = 10;
-            Abilities.Constitution = 10;
-            Abilities.Wisdom = 10;
-            Abilities.Intelligence = 10;
-            Abilities.Charisma = 10;
+            Abilities.Strength = DEFAULT;
+            Abilities.Dexterity = DEFAULT;
+            Abilities.Constitution = DEFAULT;
+            Abilities.Wisdom = DEFAULT;
+            Abilities.Intelligence = DEFAULT;
+            Abilities.Charisma = DEFAULT;
         }
 
         public void Take_damage(int damage)
@@ -67,7 +66,7 @@ namespace EverCraftKata
   
         private int Compute_damages(int modifier)
         {
-            int damage = 1;
+            int damage = MIN_DAMAGE;
 
             if (isCritical)
             {
@@ -78,9 +77,9 @@ namespace EverCraftKata
             {
                 damage += modifier;
             }
-            if (damage < 1)
+            if (damage < MIN_DAMAGE)
             {
-                damage = 1;
+                damage = MIN_DAMAGE;
             }
             return damage;
         }
@@ -94,7 +93,7 @@ namespace EverCraftKata
             else
             {
                 return false;
-            }            
+            }
         }
   
         public int Roll_a_die()
@@ -108,14 +107,14 @@ namespace EverCraftKata
                 {
                     isCritical = true;
                 }
-                return roll+modifier;
+                return roll + modifier;
             }
             if (Die_roll == 20)
             {
                 isCritical = true;
             }
 
-            return Die_roll+modifier;
+            return Die_roll + modifier;
         }
     }
 }
