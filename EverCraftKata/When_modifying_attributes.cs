@@ -42,7 +42,7 @@ namespace EverCraftKata
         [Test]
         public void Rolling_an_adjusted_20_doesnt_make_a_critical_hit()
         {
-            bob.Abilities.Strength = 20;
+            bob.Abilities.Strength = 10;
             bob.Die_roll = 15;
 
             int damage = bob.Attack(1);
@@ -59,6 +59,17 @@ namespace EverCraftKata
             int damage = bob.Attack(1);
 
             Assert.AreEqual(2, damage);
+        }
+
+        [Test]
+        public void Non_critical_hit_damage_includes_strength_modifier()
+        {
+            bob.Abilities.Strength = 20;
+            bob.Die_roll = 19;
+
+            int damage = bob.Attack(1);
+
+            Assert.AreEqual(6, damage);
         }
     }
 }

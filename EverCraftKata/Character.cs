@@ -52,6 +52,7 @@ namespace EverCraftKata
 
         public int Attack(int armor_class)
         {
+            int modifier = Abilities.Modifier(Abilities.Strength);
             int damage = 0;
             int roll = Roll_a_die();
             
@@ -62,6 +63,10 @@ namespace EverCraftKata
             if (isCritical)
             {
                 damage *= 2;
+            }
+            else
+            {
+                damage += modifier;                
             }
             return damage;
         }
