@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace EverCraftKata
 {
     [TestFixture]
-    public class When_modifying_attributes
+    public class When_attacking
     {
         Character bob;
 
@@ -81,6 +81,40 @@ namespace EverCraftKata
             int damage = bob.Attack(1);
 
             Assert.AreEqual(12, damage);
+        }
+
+        [Test]
+        public void Worst_strength_mod_still_has_damage_of_1_on_hits()
+        {
+        	 bob.Abilities.Strength = 1;
+            bob.Die_roll = 19;
+
+            int damage = bob.Attack(1);
+
+            Assert.AreEqual(1, damage);
+        }
+
+        [Test]
+        public void Worst_strength_mod_still_has_damage_of_1_on_critical_hits()
+        {
+            bob.Abilities.Strength = 1;
+            bob.Die_roll = 20;
+
+            int damage = bob.Attack(1);
+
+            Assert.AreEqual(1, damage);
+        }
+
+        [Test]
+        public void Adjusted_roll_still_misses_attack_on_high_AC()
+        {
+        	 bob.Abilities.Strength = 20;
+            bob.Die_roll = 19;
+
+            int damage = bob.Attack(30);
+
+            Assert.AreEqual(0, damage);
+        
         }
     }
 }
