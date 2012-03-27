@@ -53,26 +53,34 @@ namespace EverCraftKata
         public int Attack(int armor_class)
         {
             int modifier = Abilities.Modifier(Abilities.Strength);
-            int damage = 0;
             int roll = Roll_a_die();
 
-            if (Is_a_hit(Die_roll, armor_class))
+            if (Is_a_hit(roll, armor_class))
+            {
+                return Compute_damages(modifier);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+  
+        private int Compute_damages(int modifier)
+        {
+            int damage = 1;
+
+            if (isCritical)
+            {
+                damage *= 2;
+                damage += (modifier * 2);
+            }
+            else
+            {
+                damage += modifier;
+            }
+            if (damage < 1)
             {
                 damage = 1;
-
-                if (isCritical)
-                {
-                    damage *= 2;
-                    damage += (modifier * 2);
-                }
-                else
-                {
-                    damage += modifier;
-                }
-                if (damage < 1)
-                {
-                    damage = 1;
-                }
             }
             return damage;
         }
