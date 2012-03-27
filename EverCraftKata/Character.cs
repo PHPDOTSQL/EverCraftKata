@@ -63,6 +63,7 @@ namespace EverCraftKata
             if (isCritical)
             {
                 damage *= 2;
+                damage += (modifier * 2);
             }
             else
             {

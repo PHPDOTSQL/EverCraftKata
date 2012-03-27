@@ -53,7 +53,7 @@ namespace EverCraftKata
         [Test]
         public void Rolling_a_natural_20_makes_a_critical_hit()
         {
-            bob.Abilities.Strength = 20;
+            bob.Abilities.Strength = 10;
             bob.Die_roll = 20;
 
             int damage = bob.Attack(1);
@@ -70,6 +70,17 @@ namespace EverCraftKata
             int damage = bob.Attack(1);
 
             Assert.AreEqual(6, damage);
+        }
+
+        [Test]
+        public void Critical_hit_shows_2x_Strength_mod_for_damage()
+        {
+            bob.Abilities.Strength = 20;
+            bob.Die_roll = 20;
+
+            int damage = bob.Attack(1);
+
+            Assert.AreEqual(12, damage);
         }
     }
 }
